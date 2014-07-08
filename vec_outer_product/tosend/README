@@ -1,0 +1,27 @@
+1. Compile cuda code generator
+	make vecmultCodeGen
+
+2. Generate cuda code for desired values of parameters
+	./vecmultCodeGen x k B T > vecmultKernel00.cu
+		x - where footprint of C is a block of x^2
+		k - no. of repetitions of the calculation
+		B - no. of thread blocks (i.e. gridDim)
+		T - no. of threads per block (i.e. blockDim)
+
+	i.e. ./vecmultCodeGen 10 40000 60 64 > vecmultKernel00.cu
+
+3. Compile the CUDA program
+	make clean;
+	make vecmult00;
+
+4. Run the CUDA program 
+	./vecmult00 x k B T
+		x - where footprint of C is a block of x^2
+        k - no. of repetitions of the calculation
+        B - no. of thread blocks (i.e. gridDim)
+        T - no. of threads per block (i.e. blockDim)
+
+	i.e. vecmult00 10 40000 60 64
+
+	NOTE: make sure you use the same parameters for x and k when generating the program and running the program.
+ 

@@ -1,0 +1,10 @@
+nvcc vecmultKernel00.cu -c -o vecmultKernel00.o -O3 --maxrregcount=255 -Xptxas -v -arch=sm_35 -lineinfo
+ptxas info    : 0 bytes gmem
+ptxas info    : Compiling entry function '_Z15MultiplyVectorsPKfS0_Pf' for 'sm_35'
+ptxas info    : Function properties for _Z15MultiplyVectorsPKfS0_Pf
+    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+ptxas info    : Used 26 registers, 344 bytes cmem[0], 8 bytes cmem[2]
+nvcc high_resolution_power.cu -O3 --maxrregcount=255 -Xptxas -v -arch=sm_35 -c -o high_resolution_power.o
+ptxas info    : 0 bytes gmem
+nvcc vecmult.cu vecmultKernel00.o high_resolution_power.o -o vecmult00 -L/s/chopin/e/proj/AlphaZ/waruna/lib -L/s/chopin/e/proj/AlphaZ/waruna/papi/installation/5.3.0/lib -lnvidia-ml -lpapi  -O3 --maxrregcount=255 -Xptxas -v -arch=sm_35
+ptxas info    : 0 bytes gmem

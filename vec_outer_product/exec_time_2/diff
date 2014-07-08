@@ -1,0 +1,75 @@
+45c45
+< 	.reg .s32 	%r<14>;
+---
+> 	.reg .s32 	%r<13>;
+52,57c52,57
+< 	ld.param.u64 	%rd4, [_Z15MultiplyVectorsPKfS0_Pf_param_2];
+< 	cvta.to.global.u64 	%rd1, %rd4;
+< 	mov.u32 	%r8, %ctaid.x;
+< 	mul.lo.s32 	%r1, %r8, 11;
+< 	mov.u32 	%r9, %tid.x;
+< 	mul.lo.s32 	%r2, %r9, 11;
+---
+> 	ld.param.u64 	%rd1, [_Z15MultiplyVectorsPKfS0_Pf_param_2];
+> 	cvta.to.global.u64 	%rd4, %rd3;
+> 	mov.u32 	%r7, %ctaid.x;
+> 	mul.lo.s32 	%r1, %r7, 11;
+> 	mov.u32 	%r8, %tid.x;
+> 	mul.lo.s32 	%r2, %r8, 11;
+59d58
+< 	mul.lo.s32 	%r4, %r3, 11;
+74,87c73,85
+< 	cvta.to.global.u64 	%rd8, %rd3;
+< 	mul.wide.s32 	%rd9, %r1, 4;
+< 	add.s64 	%rd10, %rd8, %rd9;
+< 	ld.global.f32 	%f568, [%rd10];
+< 	ld.global.f32 	%f569, [%rd10+4];
+< 	ld.global.f32 	%f570, [%rd10+8];
+< 	ld.global.f32 	%f571, [%rd10+12];
+< 	ld.global.f32 	%f572, [%rd10+16];
+< 	ld.global.f32 	%f435, [%rd10+20];
+< 	ld.global.f32 	%f434, [%rd10+24];
+< 	ld.global.f32 	%f433, [%rd10+28];
+< 	ld.global.f32 	%f432, [%rd10+32];
+< 	ld.global.f32 	%f431, [%rd10+36];
+< 	ld.global.f32 	%f430, [%rd10+40];
+---
+> 	mul.wide.s32 	%rd8, %r1, 4;
+> 	add.s64 	%rd9, %rd4, %rd8;
+> 	ld.global.f32 	%f568, [%rd9];
+> 	ld.global.f32 	%f569, [%rd9+4];
+> 	ld.global.f32 	%f570, [%rd9+8];
+> 	ld.global.f32 	%f571, [%rd9+12];
+> 	ld.global.f32 	%f572, [%rd9+16];
+> 	ld.global.f32 	%f435, [%rd9+20];
+> 	ld.global.f32 	%f434, [%rd9+24];
+> 	ld.global.f32 	%f433, [%rd9+28];
+> 	ld.global.f32 	%f432, [%rd9+32];
+> 	ld.global.f32 	%f431, [%rd9+36];
+> 	ld.global.f32 	%f430, [%rd9+40];
+209c207
+< 	mov.u32 	%r13, 0;
+---
+> 	mov.u32 	%r12, 0;
+355,356c353,354
+< 	add.s32 	%r13, %r13, 1;
+< 	setp.lt.s32	%p1, %r13, 2;
+---
+> 	add.s32 	%r12, %r12, 1;
+> 	setp.ne.s32	%p1, %r12, 3;
+359c357,359
+< 	mad.lo.s32 	%r10, %r4, %r2, %r1;
+---
+> 	cvta.to.global.u64 	%rd10, %rd1;
+> 	mul.lo.s32 	%r9, %r3, 11;
+> 	mad.lo.s32 	%r10, %r9, %r2, %r1;
+361c361
+< 	add.s64 	%rd12, %rd1, %rd11;
+---
+> 	add.s64 	%rd12, %rd10, %rd11;
+373,374c373,374
+< 	shl.b32 	%r12, %r4, 2;
+< 	cvt.s64.s32	%rd13, %r12;
+---
+> 	shl.b32 	%r11, %r9, 2;
+> 	cvt.s64.s32	%rd13, %r11;
